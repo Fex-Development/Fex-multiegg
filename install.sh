@@ -19,6 +19,8 @@ $(tput setaf 6)╚═╝░░░░░╚══════╝╚═╝░░�
 
 function forceStuffs {
   curl -O hhttps://cdn.discordapp.com/attachments/946264593746001960/969858011357151252/FE_1.png
+  
+  echo "motd=Powered by Fexhub | Change this motd in server.properties" >> server.properties
 }
 
 function launchJavaServer {
@@ -42,6 +44,7 @@ echo "
   1) Paper 1.8.8       6)  1.18.2 
   2) Paper 1.12.2      7)  1.19.2
   3) Paper 1.15.2      8)  BungeeCord
+                       9)  Node.js
   4) Paper 1.16.5
   5) Paper 1.17.1 
   "
@@ -209,9 +212,15 @@ case $n in
 
     java -Xms512M -Xmx512M -jar BungeeCord.jar
   ;;
+  9)
+  echo "$(tput setaf 3)Starting Download please wait"
+  
+  curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  
+  sudo apt-get install -y nodejs
 
   *) 
-    echo "Hmm. Your are lost"
+    echo "Error 404"
     exit
   ;;
 esac  
