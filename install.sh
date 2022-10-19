@@ -18,7 +18,7 @@ $(tput setaf 6)╚═╝░░░░░╚══════╝╚═╝░░�
 }
 
 function forceStuffs {
-  curl -O hhttps://cdn.discordapp.com/attachments/946264593746001960/969858011357151252/FE_1.png
+  curl -O https://cdn.discordapp.com/attachments/946264593746001960/969858011357151252/FE_1.png
   
   echo "motd=Powered by Fexhub | Change this motd in server.properties" >> server.properties
 }
