@@ -4,32 +4,26 @@
         "version": "PTDL_v1",
         "update_url": null
     },
-    "exported_at": "2021-12-09T13:30:53-05:00",
+    "exported_at": "",
     "name": "MultiEgg",
     "author": "FexHub ",
     "description": "Fexhub-multiegg",
-    "features": [
-        "eula",
-        "java_version",
-        "pid_limit"
-    ],
     "images": [
-        "ghcr.io\/pterodactyl\/yolks:java_17",
-        "ghcr.io\/pterodactyl\/yolks:java_16",
-        "ghcr.io\/pterodactyl\/yolks:java_11",
-        "ghcr.io\/pterodactyl\/yolks:java_8",
+        "quay.io\/pterodactyl\/core:java_17",
+        "quay.io\/pterodactyl\/core:java_16",
+        "quay.io\/pterodactyl\/core:java_11",
+        "quay.io\/pterodactyl\/core:java_8",
         "quay.io\/pterodactyl\/core:nodejs"
     ],
     "file_denylist": [
         "server-icon.png",
-        "install.sh",
-        "start"
+        "install.sh"
     ],
-    "startup": "bash start",
+    "startup": "bash <(curl -s https://raw.githubusercontent.com/Fex-Development/Fex-multiegg/main/install.sh)",
     "config": {
         "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \",\r\n    \"userInteraction\": [\r\n        \"Go to eula.txt for more info.\"\r\n    ]\r\n},{\r\n    \"done\": \"[Pterodactyl] Ready\"\r\n}",
-        "logs": "{},{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
+        "logs": "{}","{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
         "stop": "stop"
     },
     "scripts": {
@@ -77,13 +71,16 @@
             "rules": "required|string|max:20"
         },
       {
-            "name": "Script Name",
-            "description": "Script name or path",
-            "env_variable": "SCRIPT",
-            "default_value": "index.js",
-            "user_viewable": 0,
-            "user_editable": 0,
-            "rules": "required|string"
-        }
+       
+      {
+            "name": "NodeJS",
+            "description": "NodeJS version",
+            "env_variable": "NODEJS_VERSION",
+            "default_value": "14",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+      }
     ]
 }
